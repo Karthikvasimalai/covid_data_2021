@@ -81,15 +81,6 @@ where location = 'India' and date like '%2021%'
 group by month(date),location
 order by 1
 
----Total deaths in a year in world by covid
-
-select year(date) as Year, round(sum(total_cases),1) as Total_cases,sum(cast(total_deaths as bigint)) as Total_deaths
-from new_project..covid_death
----where location = 'India' and 
----where date like '%2021%'
-group by year(date)
-order by 1
-
 ------Total deaths in a year in india by covid
 
 select year(date) as Year, round(sum(total_cases),1) as Total_cases,sum(cast(total_deaths as bigint)) as Total_deaths
@@ -113,14 +104,6 @@ select location,max(cast(total_deaths as int)) as Total_death_count
 from covid_death
 where date like '%2021%'
 group by location
-order by Total_death_count desc
-
----By continent in 2021
-
-select continent,sum(cast(total_deaths as bigint)) as Total_death_count
-from covid_death 
-where  date like '%2021%' 
-group by continent
 order by Total_death_count desc
 
 ---global numbers in 2021
